@@ -13,7 +13,7 @@
 //link the function to a click event on the calculate button
 var calButton = document.querySelector(".calculateBtn");
 var billTotalElement = document.querySelector(".billTotal");
-const billStringelement = document.querySelector(".billString");
+const billStringElement = document.querySelector(".billString");
 
 function calculateBtnClicked(){
    // get the string entered in the textArea
