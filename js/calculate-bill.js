@@ -11,7 +11,7 @@
 //  * once done looping over all the entries - display the total onto the screen in the billTotal element
 
 //link the function to a click event on the calculate button
-const calculateBtnElement = document.querySelector(".calculateBtn");;
+const calculateBtn = document.querySelector(".calculateBtn");;
 const billTotalElement = document.querySelector(".billTotal");
 const billStringElement = document.querySelector(".billString");
 
