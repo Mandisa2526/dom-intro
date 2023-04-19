@@ -13,7 +13,7 @@
 
 
 var textBox = document.querySelector(".billTypeText");
-var addBtn = document.querySelector(".addToBillBtn");
+var textTotalAddBtn = document.querySelector(".addToBillBtn");
 
 var callsTotal = 0;
 var smsTotal = 0;
