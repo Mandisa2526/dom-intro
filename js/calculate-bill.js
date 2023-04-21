@@ -14,7 +14,9 @@
 const calculateBtn = document.querySelector(".calculateBtn");;
 const billTotalElement = document.querySelector(".billTotal");
 const billStringElement = document.querySelector(".billString");
-
+calculateBtn.addEventListener("click", function(){
+    greetDiv.classList.toggle("warning");
+});
 function calculateBtnClicked(){
    // get the string entered in the textArea
     var billString = billStringElement.value;
