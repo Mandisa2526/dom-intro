@@ -36,7 +36,7 @@ function calculateBtnClicked(){
     billTotalElement.innerHTML = roundedBillTotal;
     
     //color the total based on the criteria
-    if (billtotal >= 30){
+    if (billTotal >= 30){
         //adding the danger class will make the text red
         roundedBillTotal.classList.add("danger");
     }
