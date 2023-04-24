@@ -12,8 +12,11 @@
 // * display the latest total on the screen
 
 
-var textBox = document.querySelector(".billTypeText");
-var textTotalAddBtn = document.querySelector(".addToBillBtn");
+var billTypeText = document.querySelector(".billTypeText");
+var addToBillBtn = document.querySelector(".addToBillBtn");
+var callTotalOne = document.querySelector(".callTotalOne");
+var smsTotalOne = document.querySelector(".smsTotalOne");
+var totalOne = document.querySelector(".totalOne");
 
 var callsTotal = 0;
 var smsTotal = 0;
