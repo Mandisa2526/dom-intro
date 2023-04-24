@@ -16,7 +16,6 @@ const billTotalElement = document.querySelector(".billTotal");
 const billStringElement = document.querySelector(".billString");
 
 function calculateBtnClicked(){
-   // get the string entered in the textArea
     var billString = billStringElement.value;
     //split the string
     var billItems = billString.split(",");
@@ -33,10 +32,9 @@ function calculateBtnClicked(){
         }
     }
     
-    
     //round to two decimals
     var roundedBillTotal = billTotal.toFixed(2);
-    billTotalElement.innerHTML = roundedBillTotal; 
+    billTotalElement.innerHTML = roundedBillTotal;
 }
 
 calculateBtn.addEventListener('click', calculateBtnClicked);
