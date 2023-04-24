@@ -34,6 +34,13 @@ function calculateBtnClicked(){
             billTotal += 0.75;
         }
     }
+    if (totalCost >= 30){
+        // adding the danger class will make the text red
+        totalCostElem.classList.add("danger");
+    }
+    else if (totalCost >= 20){
+        totalCostElem.classList.add("warning");
+    }
     
     //round to two decimals
     var roundedBillTotal = billTotal.toFixed(2);
