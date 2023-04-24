@@ -14,9 +14,7 @@
 const calculateBtn = document.querySelector(".calculateBtn");;
 const billTotalElement = document.querySelector(".billTotal");
 const billStringElement = document.querySelector(".billString");
-calculateBtn.addEventListener("click", function(){
-    greetDiv.classList.toggle("warning");
-});
+
 function calculateBtnClicked(){
    // get the string entered in the textArea
     var billString = billStringElement.value;
@@ -34,12 +32,12 @@ function calculateBtnClicked(){
             billTotal += 0.75;
         }
     }
-    if (totalCost >= 30){
+    if (billTotal >= 30){
         // adding the danger class will make the text red
-        totalCostElem.classList.add("danger");
+        billTotalElement.classList.add("danger");
     }
-    else if (totalCost >= 20){
-        totalCostElem.classList.add("warning");
+    else if (billTotal >= 20){
+        billTotalElement.classList.add("warning");
     }
     
     //round to two decimals
