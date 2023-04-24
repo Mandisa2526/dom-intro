@@ -36,14 +36,14 @@ function calculateBtnClicked(){
     //color the total based on the criteria
     if (billtotal >= 30){
         // adding the danger class will make the text red
-        roundedbillTotal.classList.add("danger");
+        roundedBillTotal.classList.add("danger");
     }
     else if (billTotal >= 20){
         roundedBillTotal.classList.add("warning");
     }
     //round to two decimals
     var roundedBillTotal = billTotal.toFixed(2);
-    roundedBillTotal.innerHTML = roundedBillTotal;
+    billTotalElement.innerHTML = roundedBillTotal;
 }
 
 calculateBtn.addEventListener('click', calculateBtnClicked);
