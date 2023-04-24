@@ -33,16 +33,15 @@ function calculateBtnClicked(){
     }
     //round to two decimals
     var roundedBillTotal = billTotal.toFixed(2);
-    billTotalElement.innerHTML = roundedBillTotal;
     
     //color the total based on the criteria
     if (billTotal >= 30){
         //adding the danger class will make the text red
-        roundedBillTotal.classList.add("danger");
+        billTotalElement.classList.add("danger");
+    } else if (billTotal >= 20 && billTotal < 30){
+        billTotalElement.classList.add("warning");
     }
-   else if (billTotal >= 20 && billTotal < 20){
-        roundedBillTotal.classList.add("warning");
-    }
+    billTotalElement.innerHTML = roundedBillTotal;
     
 }
 
