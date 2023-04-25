@@ -12,39 +12,37 @@
 // * display the latest total on the screen
 var billItemTypeRadioElem = document.querySelector(".billItemTypeRadio");
 var radioBillAddBtnElem = document.querySelector(".radioBillAddBtn");
-var calltotalTwoElem = document.querySelector(".callTotalTwo");
+var callTotalTwoElem = document.querySelector(".callTotalTwo");
 var smsTotalTwoElem = document.querySelector(".smsTotalTwo");
 var totalTwoElem = document.querySelector(".totalTwo");
 
-var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
-
 var callsTotal = 0;
 var smsTotal = 0;
-function textBillTotal(){
-    if (checkedRadioBtn){
-        var billItemType = checkedRadioBtn.value
-        
+function checkedRadioBtn(){
+    var checkedRadioBtnElem = document.querySelector("input[name='billItemType']:checked");
+    if (checkedRadioBtnElem){
+        var billItemType = checkedRadioBtnElem.value
+        var billTypeEntered = billItemType;
+        if (billTypeEntered === "call"){
+            callsTotal += 2.75
+        }
+        else if (billTypeEntered === "sms"){
+            smsTotal += 0.75;
+        }
+        callTotalTwoElem.innerHTML = callsTotal.toFixed(2);
+        smsTotalTwoElem.innerHTML = smsTotal.toFixed(2);
+        var totalCost = callsTotal + smsTotal;
+        totalTwoElem.innerHTML = totalCost.toFixed(2);
+    
+        if (totalCost >= 50){
+         
+            totalTwoElem.classList.add("danger");
+        }
+        else if (totalCost >= 30 && totalCost < 50){
+            totalTwoElem.classList.add("warning");
+        }
+       
     }
-    var billTypeEntered = billTypeText.value.trim();
-    if (billTypeEntered === "call"){
-        callsTotal += 2.75
-    }
-    else if (billTypeEntered === "sms"){
-        smsTotal += 0.75;
-    }
-    callsTotalElem.innerHTML = callsTotal.toFixed(2);
-    smsTotalElem.innerHTML = smsTotal.toFixed(2);
-    var totalCost = callsTotal + smsTotal;
-    totalCostElem.innerHTML = totalCost.toFixed(2);
-
-    if (totalCost >= 50){
-     
-        totalCostElem.classList.add("danger");
-    }
-    else if (totalCost >= 30 && totalCost < 50){
-        totalCostElem.classList.add("warning");
-    }
-
 }
 
-radioBillAddBtnElem.addEventListener('click', textBillTotal);
+radioBillAddBtnElem.addEventListener('click', checkedRadioBtn);
