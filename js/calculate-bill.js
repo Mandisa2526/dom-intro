@@ -11,32 +11,34 @@
 //  * once done looping over all the entries - display the total onto the screen in the billTotal element
 
 //link the function to a click event on the calculate button
-const calculateBtn = document.querySelector(".calculateBtn");;
+const calculateBtn = document.querySelector(".calculateBtn");   
 const billTotalElement = document.querySelector(".billTotal");
 const billStringElement = document.querySelector(".billString");
 
 function calculateBtnClicked(){
     var billString = billStringElement.value;
-    //split the string
+   
     var billItems = billString.split(",");
-    // a variable for the total phone bill.
+    
     var billTotal = 0;
-    //loop over all the bill items
+
     for (var i=0;i<billItems.length;i++){
         var billItem = billItems[i].trim();
-        if (billItem === "call"){
+        if (billItem === "call" || billItem === "CALL"){
             billTotal += 2.75;
         }
-        else if (billItem === "sms"){
+        else if (billItem === "sms" || billItem === "SMS"){
             billTotal += 0.75;
         }
     }
-    //round to two decimals
+    
     var roundedBillTotal = billTotal.toFixed(2);
     
-    //color the total based on the criteria
+    
+    billTotalElement.classList.remove("warning");
+    billTotalElement.classList.remove("danger");
     if (billTotal >= 30){
-        //adding the danger class will make the text red
+        
         billTotalElement.classList.add("danger");
     } else if (billTotal >= 20 && billTotal < 30){
         billTotalElement.classList.add("warning");

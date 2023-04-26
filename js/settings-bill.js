@@ -22,7 +22,7 @@
 // * check the value thresholds and display the total value in the right color.
 var settingsBillAddBtnElem = document.querySelector(".billItemTypeWithSettingsBtn");
 var callTotalElem = document.querySelector(".callTotalSettings");
-var smsTotalElem = document.querySelector(".smsTotalSettings");
+var smsTotalSettingsElem = document.querySelector(".smsTotalSettings");
 var totalElem = document.querySelector(".totalSettings");
 var updateSettingsBtnElem = document.querySelector(".updateSettings");
 
@@ -45,8 +45,8 @@ function checkedSettingsBtn(){
             smsTotal += costPerSms;
         };
         
-        callTotalElem.innerHTML = callsTotal.toFixed(2);
-        smsTotalElem.innerHTML = smsTotal.toFixed(2);
+        smsTotalSettingsElem.innerHTML = callsTotal.toFixed(2);
+        smsTotalSettingsElem.innerHTML = smsTotal.toFixed(2);
         var totalCost = callsTotal + smsTotal;
         totalElem.innerHTML = totalCost.toFixed(2);
     
@@ -60,10 +60,22 @@ function checkedSettingsBtn(){
 }
 
 function updateSettingsBtn () {
-    // var costPerSms = 0.75;
-    // var costPerCall = 2.75;
-    // var redTotalCost = 50;
-    // var orangeTotalCost = 30;
+    var callCostSettingElem = document.querySelector(".callCostSetting");
+    var smsCostSettingElem = document.querySelector(".smsCostSetting");
+    var warningLevelSettingElem = document.querySelector(".warningLevelSetting");
+    var criticalLevelSettingElem = document.querySelector(".criticalLevelSetting");
+    if (callCostSettingElem.value) {
+        costPerCall = Number(callCostSettingElem.value);
+    }
+    if (smsCostSettingElem.value) {
+        costPerSms = Number(smsCostSettingElem.value);
+    }
+    if (warningLevelSettingElem.value) {
+        orangeTotalCost = Number(warningLevelSettingElem.value);
+    }
+    if (criticalLevelSettingElem.value) {
+        redTotalCost = Number(criticalLevelSettingElem.value);
+    }
 
 }
 
