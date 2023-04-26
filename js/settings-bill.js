@@ -21,7 +21,7 @@
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
 var settingsBillAddBtnElem = document.querySelector(".billItemTypeWithSettingsBtn");
-var callTotalElem = document.querySelector(".callTotalSettings");
+var callTotalSettingsElem = document.querySelector(".callTotalSettings");
 var smsTotalSettingsElem = document.querySelector(".smsTotalSettings");
 var totalElem = document.querySelector(".totalSettings");
 var updateSettingsBtnElem = document.querySelector(".updateSettings");
@@ -45,7 +45,7 @@ function checkedSettingsBtn(){
             smsTotal += costPerSms;
         };
         
-        smsTotalSettingsElem.innerHTML = callsTotal.toFixed(2);
+        callTotalSettingsElem.innerHTML = callsTotal.toFixed(2);
         smsTotalSettingsElem.innerHTML = smsTotal.toFixed(2);
         var totalCost = callsTotal + smsTotal;
         totalElem.innerHTML = totalCost.toFixed(2);
