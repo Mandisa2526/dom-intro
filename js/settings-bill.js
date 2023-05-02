@@ -23,38 +23,40 @@
 var settingsBillAddBtnElem = document.querySelector(".billItemTypeWithSettingsBtn");
 var callTotalSettingsElem = document.querySelector(".callTotalSettings");
 var smsTotalSettingsElem = document.querySelector(".smsTotalSettings");
-var totalElem = document.querySelector(".totalSettings");
+var totalSettingsElem = document.querySelector(".totalSettings");
 var updateSettingsBtnElem = document.querySelector(".updateSettings");
 
-var callsTotal = 0;
-var smsTotal = 0;
+var callsSettingsTotal = 0;
+var smsSettingsTotal = 0;
 
 var costPerSms = 0.75;
 var costPerCall = 2.75;
 var redTotalCost = 50;
 var orangeTotalCost = 30;
+var checkedSettingsTotalCost = 0;
 
 function checkedSettingsBtn(){
     var checkedSettingBtnElem = document.querySelector("input[name='billItemTypeWithSettings']:checked");
     if (checkedSettingBtnElem){
         var billTypeEntered = checkedSettingBtnElem.value;
-        if (billTypeEntered === "call"){
-            callsTotal += costPerCall;
+        if (billTypeEntered === "call" && checkedSettingsTotalCost < redTotalCost){
+            callsSettingsTotal += costPerCall;
         }
-        else if (billTypeEntered === "sms"){
-            smsTotal += costPerSms;
+        else if (billTypeEntered === "sms" && checkedSettingsTotalCost < redTotalCost){
+            smsSettingsTotal += costPerSms;
         };
         
-        callTotalSettingsElem.innerHTML = callsTotal.toFixed(2);
-        smsTotalSettingsElem.innerHTML = smsTotal.toFixed(2);
-        var totalCost = callsTotal + smsTotal;
-        totalElem.innerHTML = totalCost.toFixed(2);
-    
-        if (totalCost >= redTotalCost){
-            totalElem.classList.add("danger");
+        callTotalSettingsElem.innerHTML = callsSettingsTotal.toFixed(2);
+        smsTotalSettingsElem.innerHTML = smsSettingsTotal.toFixed(2);
+        checkedSettingsTotalCost = callsSettingsTotal + smsSettingsTotal;
+        totalSettingsElem.innerHTML = checkedSettingsTotalCost.toFixed(2);
+        totalSettingsElem.classList.remove("warning");
+        totalSettingsElem.classList.remove("danger");
+        if (checkedSettingsTotalCost >= redTotalCost){
+            totalSettingsElem.classList.add("danger");
         }
-        else if (totalCost >= orangeTotalCost && totalCost < redTotalCost){
-            totalElem.classList.add("warning");
+        else if (checkedSettingsTotalCost >= orangeTotalCost && checkedSettingsTotalCost < redTotalCost){
+            totalSettingsElem.classList.add("warning");
         }
     }
 }

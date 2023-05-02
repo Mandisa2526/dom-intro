@@ -12,34 +12,34 @@
 // * display the latest total on the screen
 var billItemTypeRadioElem = document.querySelector(".billItemTypeRadio");
 var radioBillAddBtnElem = document.querySelector(".radioBillAddBtn");
-var callTotalTwoElem = document.querySelector(".callTotalTwo");
-var smsTotalTwoElem = document.querySelector(".smsTotalTwo");
-var totalTwoElem = document.querySelector(".totalTwo");
+var callTotalRadioElem = document.querySelector(".callTotalTwo");
+var smsTotalRadioElem = document.querySelector(".smsTotalTwo");
+var totalRadioElem = document.querySelector(".totalTwo");
 
-var callsTotal = 0;
-var smsTotal = 0;
+var callsRadioTotal = 0;
+var smsRadioTotal = 0;
 function checkedRadioBtn(){
     var checkedRadioBtnElem = document.querySelector("input[name='billItemType']:checked");
     if (checkedRadioBtnElem){
-        var billItemType = checkedRadioBtnElem.value
-        var billTypeEntered = billItemType;
-        if (billTypeEntered === "call"){
-            callsTotal += 2.75
+        var billRadioItemType = checkedRadioBtnElem.value
+        var billTypeEnteredR = billRadioItemType;
+        if (billTypeEnteredR === "call"){
+            callsRadioTotal += 2.75
         }
-        else if (billTypeEntered === "sms"){
-            smsTotal += 0.75;
+        else if (billTypeEnteredR === "sms"){
+            smsRadioTotal += 0.75;
         }
-        callTotalTwoElem.innerHTML = callsTotal.toFixed(2);
-        smsTotalTwoElem.innerHTML = smsTotal.toFixed(2);
-        var totalCost = callsTotal + smsTotal;
-        totalTwoElem.innerHTML = totalCost.toFixed(2);
+        callTotalRadioElem.innerHTML = callsRadioTotal.toFixed(2);
+        smsTotalRadioElem.innerHTML = smsRadioTotal.toFixed(2);
+        var totalCost = callsRadioTotal + smsRadioTotal;
+        totalRadioElem.innerHTML = totalCost.toFixed(2);
     
         if (totalCost >= 50){
          
-            totalTwoElem.classList.add("danger");
+            totalRadioElem.classList.add("danger");
         }
         else if (totalCost >= 30 && totalCost < 50){
-            totalTwoElem.classList.add("warning");
+            totalRadioElem.classList.add("warning");
         }
        
     }
