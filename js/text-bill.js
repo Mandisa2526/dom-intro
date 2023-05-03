@@ -37,7 +37,7 @@ function textBillTotal(){
      
         totalCostTextElem.classList.add("danger");
     }
-    else if (totalTextCost >= 30 && totalCost < 50){
+    else if (totalTextCost >= 30 && totalTextCost < 50){
         totalCostTextElem.classList.add("warning");
     }
 
