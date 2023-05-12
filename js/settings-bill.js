@@ -34,8 +34,9 @@ var costPerCall = 2.75;
 var redTotalCost = 50;
 var orangeTotalCost = 30;
 var checkedSettingsTotalCost = 0;
+//checkedSettingsBtn
 
-function checkedSettingsBtn(){
+function BillWithSettingsBtn(){
     var checkedSettingBtnElem = document.querySelector("input[name='billItemTypeWithSettings']:checked");
     if (checkedSettingBtnElem){
         var billTypeEntered = checkedSettingBtnElem.value;
@@ -61,6 +62,8 @@ function checkedSettingsBtn(){
     }
 }
 
+settingsBillAddBtnElem.addEventListener('click', BillWithSettingsBtn);
+
 function updateSettingsBtn () {
     var callCostSettingElem = document.querySelector(".callCostSetting");
     var smsCostSettingElem = document.querySelector(".smsCostSetting");
@@ -82,4 +85,3 @@ function updateSettingsBtn () {
 }
 
 updateSettingsBtnElem.addEventListener('click', updateSettingsBtn);
-settingsBillAddBtnElem.addEventListener('click', checkedSettingsBtn);
