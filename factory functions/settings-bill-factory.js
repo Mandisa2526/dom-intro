@@ -1,13 +1,4 @@
 function BillWithSettings(){
-    var callsSettingsTotal = 0;
-    var smsSettingsTotal = 0;
-
-    var costPerSms = 0.75;
-    var costPerCall = 2.75;
-    var redTotalCost = 50;
-    var orangeTotalCost = 30;
-    var checkedSettingsTotalCost = 0;
-
     var theCallCost = 0;
     var theSmsCost = 0;
     var warningLevel = 0;
@@ -16,30 +7,16 @@ function BillWithSettings(){
     var smsCostTotal = 0;
 
     function setCallCost(callCost){
-        //theCallCost = callCost;
-        if (checkedSettingBtnElem[callCost]){
-            var billTypeEntered = checkedSettingBtnElem.value;
-            if (billTypeEntered === "call" && checkedSettingsTotalCost < redTotalCost){
-                callsSettingsTotal += costPerCall;
-            }
-        }
+        theCallCost = callCost;
     }
-
     function getCallCost(){
        return theCallCost ;
     }
     function setSmsCost(smsCost){
-        //theSmsCost = smsCost
-        if (checkedSettingBtnElem[smsCost]){
-            var billTypeEntered = checkedSettingBtnElem.value;
-            if (billTypeEntered === "sms" && checkedSettingsTotalCost < redTotalCost){
-              smsSettingsTotal += costPerSms;
-           };
-        }
+        theSmsCost = smsCost
     }
     function getSmsCost(){
-        //return theSmsCost;
-        
+        return theSmsCost;
     }
     function setWarningLevel(warninglevel){
         warningLevel = warninglevel;
@@ -81,7 +58,7 @@ function BillWithSettings(){
 
     function totalClassName(){
        if(hasReachedCritical()){
-           return "critical";
+           return "danger";
        }
        if (getTotalCost() >= getWarningLevel()){
           return "warning";
@@ -102,9 +79,6 @@ function BillWithSettings(){
         getTotalSmsCost,
         sendSms,
         hasReachedCritical,
-        totalClassName
-
-
-        
+        totalClassName    
     }      
 }

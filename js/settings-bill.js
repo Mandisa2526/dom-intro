@@ -26,39 +26,40 @@ var smsTotalSettingsElem = document.querySelector(".smsTotalSettings");
 var totalSettingsElem = document.querySelector(".totalSettings");
 var updateSettingsBtnElem = document.querySelector(".updateSettings");
 
-var callsSettingsTotal = 0;
-var smsSettingsTotal = 0;
+// var callsSettingsTotal = 0;
+// var smsSettingsTotal = 0;
 
-var costPerSms = 0.75;
-var costPerCall = 2.75;
-var redTotalCost = 50;
-var orangeTotalCost = 30;
-var checkedSettingsTotalCost = 0;
+// var costPerSms = 0.75;
+// var costPerCall = 2.75;
+// var redTotalCost = 50;
+// var orangeTotalCost = 30;
+// var checkedSettingsTotalCost = 0;
+
 //checkedSettingsBtn
+var billSettings = BillWithSettings();
+billSettings.setCallCost(2.75); //setting default setting
+billSettings.setSmsCost(0.75);
+billSettings.setCriticalLevel(50);
+billSettings.setWarningLevel(30);
 
 function BillWithSettingsBtn(){
     var checkedSettingBtnElem = document.querySelector("input[name='billItemTypeWithSettings']:checked");
     if (checkedSettingBtnElem){
         var billTypeEntered = checkedSettingBtnElem.value;
-        if (billTypeEntered === "call" && checkedSettingsTotalCost < redTotalCost){
-            callsSettingsTotal += costPerCall;
+        if (billTypeEntered === "call"){
+            billSettings.makeCall();
         }
-        else if (billTypeEntered === "sms" && checkedSettingsTotalCost < redTotalCost){
-            smsSettingsTotal += costPerSms;
+        else if (billTypeEntered === "sms"){
+            //smsSettingsTotal += costPerSms;
+            billSettings.sendSms();
         };
         
-        callTotalSettingsElem.innerHTML = callsSettingsTotal.toFixed(2);
-        smsTotalSettingsElem.innerHTML = smsSettingsTotal.toFixed(2);
-        checkedSettingsTotalCost = callsSettingsTotal + smsSettingsTotal;
-        totalSettingsElem.innerHTML = checkedSettingsTotalCost.toFixed(2);
+        callTotalSettingsElem.innerHTML = billSettings.getTotalCallCost().toFixed(2);
+        smsTotalSettingsElem.innerHTML = billSettings.getTotalSmsCost().toFixed(2);
+        totalSettingsElem.innerHTML = billSettings.getTotalCost().toFixed(2);
         totalSettingsElem.classList.remove("warning");
         totalSettingsElem.classList.remove("danger");
-        if (checkedSettingsTotalCost >= redTotalCost){
-            totalSettingsElem.classList.add("danger");
-        }
-        else if (checkedSettingsTotalCost >= orangeTotalCost && checkedSettingsTotalCost < redTotalCost){
-            totalSettingsElem.classList.add("warning");
-        }
+        totalSettingsElem.classList.add(billSettings.totalClassName());
     }
 }
 
@@ -70,16 +71,16 @@ function updateSettingsBtn () {
     var warningLevelSettingElem = document.querySelector(".warningLevelSetting");
     var criticalLevelSettingElem = document.querySelector(".criticalLevelSetting");
     if (callCostSettingElem.value) {
-        costPerCall = Number(callCostSettingElem.value);
+        billSettings.setCallCost( Number(callCostSettingElem.value))
     }
     if (smsCostSettingElem.value) {
-        costPerSms = Number(smsCostSettingElem.value);
+       billSettings.setSmsCost(Number(smsCostSettingElem.value))
     }
     if (warningLevelSettingElem.value) {
-        orangeTotalCost = Number(warningLevelSettingElem.value);
+        billSettings.setWarningLevel(Number(warningLevelSettingElem.value));
     }
     if (criticalLevelSettingElem.value) {
-        redTotalCost = Number(criticalLevelSettingElem.value);
+        billSettings.setCriticalLevel(Number(criticalLevelSettingElem.value));
     }
 
 }
